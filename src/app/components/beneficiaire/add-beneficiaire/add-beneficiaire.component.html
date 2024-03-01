@@ -1,0 +1,106 @@
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <div class="page-sub-header">
+                    <h3 class="page-title">Add Students</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="students.html">Student</a></li>
+                        <li class="breadcrumb-item active">Add Beneficiaries</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card comman-shadow">
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="form-title student-info">beneficiaries Informations <span><a href="javascript:;"><i
+                                    class="feather-more-vertical"></i></a></span></h5>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>First Name <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="text" placeholder="Enter First Name" required
+                                        [(ngModel)]="newBeneficiaire.firstName" name="firstName">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>Last Name <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="text" placeholder="Enter Last Name" required
+                                        [(ngModel)]="newBeneficiaire.lastName" name="lastName">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>E-Mail <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="email" placeholder="Enter Email Address" required
+                                        [(ngModel)]="newBeneficiaire.email" name="email">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>Education Level </label>
+                                    <input class="form-control" type="text" placeholder="Enter Education Level"
+                                        [(ngModel)]="newBeneficiaire.educationLevel" name="educationLevel">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>Phone </label>
+                                    <input class="form-control" type="tel" placeholder="Enter Phone Number"
+                                        [(ngModel)]="newBeneficiaire.phoneNumber" name="phoneNumber">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>CIN </label>
+                                    <input class="form-control" type="text" placeholder="Enter CIN Number"
+                                        [(ngModel)]="newBeneficiaire.cin" name="cin">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>Address </label>
+                                    <input class="form-control" type="text" placeholder="Enter Address"
+                                        [(ngModel)]="newBeneficiaire.adress" name="address">
+                                </div>
+                            </div>
+
+                          
+
+                            <div class="col-12">
+                                <ngx-dropzone (change)="onSelect($event)">
+                                    <ngx-dropzone-label>Drag and Drop Files</ngx-dropzone-label>
+                                    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                                        <ngx-dropzone-label>
+                                            {{f.name}} {{f.type}}
+                                        </ngx-dropzone-label>
+                                    </ngx-dropzone-preview>
+                                </ngx-dropzone>
+                            </div>
+
+                            <div class="col-12">
+                                <img *ngIf="imageUrl" [src]="imageUrl" class="uploaded-image" alt="Uploaded Image">
+                            </div>
+
+                            <div class="col-12">
+                                <div class="student-submit">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

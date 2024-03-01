@@ -1,0 +1,94 @@
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-sub-header">
+                    <h3 class="page-title">Students</h3>
+                    <ul class="breadcrumb">
+                        
+                        <li class="breadcrumb-item active">All Students</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="student-group-form">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search by ID ..." (input)="searchBeneficiairesById($event)">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search by Name ..." (input)="searchBeneficiairesByName($event)">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search by Phone ..." (input)="searchBeneficiairesByPhone($event)">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table comman-shadow">
+                <div class="card-body">
+                    <div class="page-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="page-title">Beneficiaries</h3>
+                            </div>
+                            <div class="col-auto text-end float-end ms-auto download-grp">
+                                <a href="students.html" class="btn btn-outline-gray me-2 active"><i class="feather-list"></i></a>
+                                <a href="students-grid.html" class="btn btn-outline-gray me-2"><i class="feather-grid"></i></a>
+                                <a href="#" class="btn btn-outline-primary me-2" (click)="downloadExcel()"><i class="fas fa-download"></i> Download</a>
+                                <a [routerLink]="['add-beneficiaire']" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                            <thead class="student-thread">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>CIN</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Education Level</th>
+                                    <th class="text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let beneficiaire of filteredBeneficiaires">
+                                    <td>{{ beneficiaire.id }}</td>
+                                    <td><img class="avatar-img rounded-circle" [src]="beneficiaire.image" alt="Beneficiary Image" width="30" height="30"></td>
+                                    <td>{{ beneficiaire.firstName }} {{ beneficiaire.lastName }}</td>
+                                    <td>{{ beneficiaire.cin }}</td>
+                                    <td>{{ beneficiaire.phoneNumber }}</td>
+                                    <td>{{ beneficiaire.email }}</td>
+                                    <td>{{ beneficiaire.adress }}</td>
+                                    <td>{{ beneficiaire.educationLevel }}</td>
+                                    <td class="text-end">
+                                        <div class="actions">
+                                            <a href="javascript:;" class="btn btn-sm bg-success-light me-2"><i class="feather-eye"></i></a>
+                                            <a [routerLink]="['/beneficiaire/edit', beneficiaire.id]" class="btn btn-sm bg-danger-light"><i class="feather-edit"></i></a>
+                                            <a href="javascript:;" class="btn btn-sm bg-danger-light" (click)="onDelete(beneficiaire.id)"><i class="feather-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
