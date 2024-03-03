@@ -1,0 +1,82 @@
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <div class="page-sub-header">
+                    <h3 class="page-title">Add Formations</h3>
+                    <ul class="breadcrumb">
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card comman-shadow">
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="form-title student-info">Formations Informations <span><a href="javascript:;"><i
+                                    class="feather-more-vertical"></i></a></span></h5>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>Description <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="text" placeholder="description" required
+                                        [(ngModel)]="newFormation.description" name="description">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>price<span class="login-danger">*</span></label>
+                                    <input class="form-control" type="text" placeholder="Enter price" required
+                                        [(ngModel)]="newFormation.price" name="price">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>Start Date <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="date" placeholder="Enter startDate" required
+                                        [(ngModel)]="newFormation.startDate" name="startDate">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>End Date </label>
+                                    <input class="form-control" type="date" placeholder="Enter End Date"
+                                        [(ngModel)]="newFormation.endDate" name="endDate">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>Beneficiaires </label>
+                                    <input class="form-control" type="text" placeholder="Enter beneficiaires"
+                                        [(ngModel)]="newFormation.beneficiaires" name="beneficiaires">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="form-group local-forms">
+                                    <label>formateur </label>
+                                    <input class="form-control" type="text" placeholder="Enter formateur"
+                                        [(ngModel)]="newFormation.formateur" name="formateur">
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <div class="student-submit">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

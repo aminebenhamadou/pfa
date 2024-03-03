@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Formation } from '../models/Formation';
-
+import * as XLSX from 'xlsx' 
 @Injectable({
   providedIn: 'root'
 })
@@ -31,4 +31,15 @@ export class FormationService {
   deleteFormation(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/formations/${id}`);
   }
+
+  downloadExcel(formations: Formation[]): Observable<Blob> {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(formations);
+    const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    return new Observable((observer) => {
+      observer.next(blob);
+      observer.complete();
+    });
+}
 }

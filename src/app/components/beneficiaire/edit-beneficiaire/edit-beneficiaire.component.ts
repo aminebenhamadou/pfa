@@ -28,9 +28,6 @@ files: File[] = [];
     this.beneficiaireId = 0;
   }
 
-
-
-
   ngOnInit(): void {
     const routeSnapshot = this.route.snapshot;
     if (routeSnapshot) {

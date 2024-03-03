@@ -1,24 +1,24 @@
-import { Component, OnInit , Inject} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Beneficiaire } from 'src/app/models/Beneficiaire';
-import { BeneficiaireService } from 'src/app/services/BeneficiaireService';
+import { Formateur } from 'src/app/models/Formateur';
+import { FormateurService } from 'src/app/services/FormateurService';
 import { UploadService } from 'src/app/upload.service';
 
 @Component({
-  selector: 'app-add-beneficiaire',
-  templateUrl: './add-beneficiaire.component.html',
-  styleUrls: ['./add-beneficiaire.component.css']
+  selector: 'app-add-formateur',
+  templateUrl: './add-formateur.component.html',
+  styleUrls: ['./add-formateur.component.css']
 })
-export class AddBeneficiaireComponent implements OnInit {
+export class AddFormateurComponent implements OnInit {
   form!: FormGroup;
-  newBeneficiaire: Beneficiaire = {} as Beneficiaire;
+  newFormateur: Formateur = {} as Formateur;
   files: File[] = [];
   imageUrl: string = "";
   imageUploaded: boolean = false;
 
   constructor(
-    private beneficiaireService: BeneficiaireService,
+    private formateurService: FormateurService,
     private router: Router,
     private upload: UploadService,
     private fb: FormBuilder
@@ -29,11 +29,11 @@ export class AddBeneficiaireComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      educationLevel: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]],
-      cin: ['', [Validators.required]],
-      adress: ['', [Validators.required]],
-      image: ['', [Validators.required]],
+      domain: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      cin: ['', Validators.required],
+      address: ['', Validators.required],
+      image: ['', Validators.required], // Assuming image upload is required
     });
   }
 
@@ -60,24 +60,24 @@ export class AddBeneficiaireComponent implements OnInit {
     this.upload.uploadImage(data).subscribe((res: any) => {
       console.log(res);
       this.imageUrl = res.url;
-      this.newBeneficiaire.image = res.url; // Mettre à jour l'URL de l'image dans l'objet Beneficiaire
+      this.newFormateur.image = res.url; // Update the image URL in the Formateur object
       this.imageUploaded = true;
     });
   }
-  
 
- onSubmit(): void {
-    this.beneficiaireService.addBeneficiaire(this.newBeneficiaire).subscribe(
+  onSubmit(): void {
+    this.formateurService.addFormateur(this.newFormateur).subscribe(
       (res: any) => {
         // Handle success response
-        console.log('Beneficiaire added successfully:', res);
+        console.log('Formateur added successfully:', res);
         // Reset the form after successful submission
         this.resetForm();
-        this.router.navigate(['/beneficiaire']);
+        this.router.navigate(['/formateur']);
       },
       (error) => {
         // Handle error response
-        console.error('Error adding beneficiaire:', error);
+        console.error('Error adding formateur:', error);
+        // You can also provide user feedback for the error here
       }
     );
   }
