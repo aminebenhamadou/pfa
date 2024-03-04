@@ -7,7 +7,7 @@ export interface  Formateur {
     cin: string;
     phoneNumber: string;
     email: string;
-    address: string;
+    adress: string;
     domain: string;
     image: string;
 

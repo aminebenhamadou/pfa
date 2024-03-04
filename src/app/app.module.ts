@@ -15,6 +15,8 @@ import { AddFormationComponent } from './components/formation/add-formation/add-
 import { EditFormationComponent } from './components/formation/edit-formation/edit-formation.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BeneficiairegridComponent } from './components/beneficiairegrid/beneficiairegrid.component';
+import { FormateurgridComponent } from './formateurgrid/formateurgrid.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditFormateurComponent,
     FormationComponent,
     AddFormationComponent,
-    EditFormationComponent
+    EditFormationComponent,
+    BeneficiairegridComponent,
+    FormateurgridComponent,
+    
   ],
   imports:[
     BrowserModule,

@@ -9,7 +9,7 @@ import * as XLSX from 'xlsx';
   providedIn: 'root'
 })
 export class BeneficiaireService {
-  private apiUrl = 'http://localhost:7070'; 
+  private apiUrl = 'http://localhost:6060'; 
 
   constructor(private http: HttpClient) { }
 

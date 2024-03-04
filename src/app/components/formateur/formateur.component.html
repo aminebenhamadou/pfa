@@ -44,7 +44,7 @@
                             </div>
                             <div class="col-auto text-end float-end ms-auto download-grp">
                                 <a href="formateru.html" class="btn btn-outline-gray me-2 active"><i class="feather-list"></i></a>
-                                <a href="formateur-grid.html" class="btn btn-outline-gray me-2"><i class="feather-grid"></i></a>
+                                <a routerLink="/formateurgrid"  class="btn btn-outline-gray me-2"><i class="feather-grid"></i></a>
                                 <a href="#" class="btn btn-outline-primary me-2" (click)="downloadExcel()"><i class="fas fa-download"></i> Download</a>
                                 <a [routerLink]="['add-formateur']" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                             </div>
@@ -74,7 +74,7 @@
                                     <td>{{ formateur.cin }}</td>
                                     <td>{{ formateur.phoneNumber }}</td>
                                     <td>{{ formateur.email }}</td>
-                                    <td>{{ formateur.address }}</td>
+                                    <td>{{ formateur.adress }}</td>
                                     <td>{{ formateur.domain }}</td>
                                     
                                     <td class="text-end">

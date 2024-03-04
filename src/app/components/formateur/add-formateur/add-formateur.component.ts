@@ -32,7 +32,7 @@ export class AddFormateurComponent implements OnInit {
       domain: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       cin: ['', Validators.required],
-      address: ['', Validators.required],
+      adress: ['', Validators.required],
       image: ['', Validators.required], // Assuming image upload is required
     });
   }

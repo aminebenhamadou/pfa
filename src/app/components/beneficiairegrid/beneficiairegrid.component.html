@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            /* Permet à la carte de s'étendre sur toute la hauteur */
+        }
+
+        .card-body {
+            flex-grow: 1;
+            /* Permet au corps de la carte de s'étendre et de remplir l'espace disponible */
+        }
+
+        .student-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Aligne verticalement le contenu au centre */
+            align-items: center; /* Aligne horizontalement le contenu au centre */
+            height: 100%; /* Permet au contenu de remplir toute la hauteur de la carte */
+        }
+
+        .student-img img {
+            width: 150px; /* Définir la largeur de l'image */
+            height: 150px; /* Définir la hauteur de l'image */
+            object-fit: cover; /* Ajuster l'image pour couvrir le conteneur sans déformer */
+        }
+
+        .student-content h5 {
+            white-space: nowrap; /* Empêche le texte de passer à la ligne */
+            overflow: hidden; /* Cache le texte qui dépasse la taille du conteneur */
+            text-overflow: ellipsis; /* Ajoute des points de suspension pour indiquer qu'il y a plus de texte */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content container-fluid">
+
+        <div class="page-header">
+          
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table comman-shadow">
+                    <div class="card-body pb-0">
+
+                        <div class="page-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="page-title">Beneficiaries</h3>
+                                </div>
+                                <div class="col-auto text-end float-end ms-auto download-grp">
+                                    <a href="students.html" class="btn btn-outline-gray me-2"><i
+                                            class="feather-list"></i></a>
+                                    <a href="students-grid.html" class="btn btn-outline-gray me-2 active"><i
+                                            class="feather-grid "></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="student-pro-list">
+                            <!-- Utilisation d'une seule rangée pour toutes les cartes -->
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-4 col-md-6 d-flex" *ngFor="let beneficiaire of beneficiaires">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="student-box">
+                                                <div class="student-img">
+                                                    <img class="img-fluid" [src]="beneficiaire.image"
+                                                        alt="Beneficiary Image">
+                                                </div>
+                                                <div class="student-content pb-0">
+                                                    <h5><a href="student-details.html" style="display: inline;">{{beneficiaire.firstName}}  {{beneficiaire.lastName}}</a></h5>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>COPYRIGHT © 2023 DREAMSTECHNOLOGIES.</p>
+    </footer>
+
+</body>
+
+</html>

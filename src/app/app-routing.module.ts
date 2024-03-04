@@ -9,9 +9,12 @@ import { EditFormateurComponent } from './components/formateur/edit-formateur/ed
 import { FormationComponent } from './components/formation/formation.component';
 import { AddFormationComponent } from './components/formation/add-formation/add-formation.component';
 import { EditFormationComponent } from './components/formation/edit-formation/edit-formation.component';
-
+import { BeneficiairegridComponent } from './components/beneficiairegrid/beneficiairegrid.component';
+import { FormateurgridComponent } from './formateurgrid/formateurgrid.component';
 const routes: Routes = [
   { path: 'beneficiaire', component: BeneficiaireComponent },
+  { path: 'beneficiairegrid', component: BeneficiairegridComponent },
+  { path: 'formateurgrid', component: FormateurgridComponent },
   { path: 'beneficiaire/add-beneficiaire', component: AddBeneficiaireComponent },
   { path: 'beneficiaire/edit/:id', component: EditBeneficiaireComponent } ,
   { path: 'formateur', component: FormateurComponent },
