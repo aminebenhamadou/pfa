@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Formation } from 'src/app/models/Formation';
 import { FormationService } from 'src/app/services/FormationService';
+import { Formateur } from '../../../models/Formateur';
+import { FormateurService } from 'src/app/services/FormateurService';
+
 @Component({
   selector: 'app-add-formation',
   templateUrl: './add-formation.component.html',
@@ -10,9 +13,11 @@ import { FormationService } from 'src/app/services/FormationService';
 })
 export class AddFormationComponent implements OnInit {
   form!: FormGroup;
-  newFormation: Formation = {} as Formation;
+  formateurs: Formateur[] = [];
+
   constructor(
-    private FormationService: FormationService,
+    private formationService: FormationService,
+    private formateurService: FormateurService,
     private router: Router,
     private fb: FormBuilder
   ) {}
@@ -21,27 +26,30 @@ export class AddFormationComponent implements OnInit {
     this.form = this.fb.group({
       description: ['', Validators.required],
       price: ['', Validators.required],
-      startDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]],
-      beneficiaires: ['', [Validators.required]],
-      formateur: ['', [Validators.required]],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      formateur: ['', Validators.required],
+    });
+
+    this.formateurService.getAllFormateurs().subscribe(formateurs => {
+      this.formateurs = formateurs;
     });
   }
 
- onSubmit(): void {
-    this.FormationService.addFormation(this.newFormation).subscribe(
-      (res: any) => {
-        // Handle success response
-        console.log('Formation added successfully:', res);
-        // Reset the form after successful submission
-        this.resetForm();
-        this.router.navigate(['/formation']);
-      },
-      (error) => {
-        // Handle error response
-        console.error('Error adding formation:', error);
-      }
-    );
+  onSubmit(): void {
+    if (this.form.valid) {
+      const newFormation: Formation = this.form.value; // Assign the form values to newFormation object
+      this.formationService.addFormation(newFormation).subscribe(
+        (res: any) => {
+          console.log('Formation added successfully:', res);
+          this.resetForm();
+          this.router.navigate(['/formation']);
+        },
+        (error) => {
+          console.error('Error adding formation:', error);
+        }
+      );
+    }
   }
 
   resetForm(): void {

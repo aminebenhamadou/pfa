@@ -20,8 +20,8 @@
                     <form (ngSubmit)="onSubmit()">
                         <div class="row">
                             <div class="col-12">
-                                <h5 class="form-title student-info">beneficiaries Informations <span><a href="javascript:;"><i
-                                    class="feather-more-vertical"></i></a></span></h5>
+                                <h5 class="form-title student-info">beneficiaries Informations <span><a
+                                            href="javascript:;"><i class="feather-more-vertical"></i></a></span></h5>
                             </div>
                             <div class="col-12 col-sm-4">
                                 <div class="form-group local-forms">
@@ -74,13 +74,26 @@
                                         [(ngModel)]="newBeneficiaire.adress" name="address">
                                 </div>
                             </div>
+                            <!-- Ajoutez une liste déroulante ou des cases à cocher pour les formations -->
+                            <div class="col-12">
+                                <div class="form-group local-forms">
+                                    <label>Formations</label>
+                                    <select class="form-control" multiple [(ngModel)]="selectedFormations"
+                                        name="formations">
+                                        <option *ngFor="let formation of formations" [value]="formation">{{
+                                            formation.description }}</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                          
+
+
 
                             <div class="col-12">
                                 <ngx-dropzone (change)="onSelect($event)">
                                     <ngx-dropzone-label>Drag and Drop Files</ngx-dropzone-label>
-                                    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                                    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true"
+                                        (removed)="onRemove(f)">
                                         <ngx-dropzone-label>
                                             {{f.name}} {{f.type}}
                                         </ngx-dropzone-label>

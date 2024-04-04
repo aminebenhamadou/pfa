@@ -16,7 +16,7 @@
         <div class="col-sm-12">
             <div class="card comman-shadow">
                 <div class="card-body">
-                    <form (ngSubmit)="onSubmit()">
+                    <form (ngSubmit)="onSubmit()" [formGroup]="form">
                         <div class="row">
                             <div class="col-12">
                                 <h5 class="form-title student-info">Formations Informations <span><a href="javascript:;"><i
@@ -26,14 +26,14 @@
                                 <div class="form-group local-forms">
                                     <label>Description <span class="login-danger">*</span></label>
                                     <input class="form-control" type="text" placeholder="description" required
-                                        [(ngModel)]="newFormation.description" name="description">
+                                        formControlName="description">
                                 </div>
                             </div>
                             <div class="col-12 col-sm-4">
                                 <div class="form-group local-forms">
-                                    <label>price<span class="login-danger">*</span></label>
-                                    <input class="form-control" type="text" placeholder="Enter price" required
-                                        [(ngModel)]="newFormation.price" name="price">
+                                    <label>Price<span class="login-danger">*</span></label>
+                                    <input class="form-control" type="number" placeholder="Enter price" required
+                                        formControlName="price">
                                 </div>
                             </div>
 
@@ -41,7 +41,7 @@
                                 <div class="form-group local-forms">
                                     <label>Start Date <span class="login-danger">*</span></label>
                                     <input class="form-control" type="date" placeholder="Enter startDate" required
-                                        [(ngModel)]="newFormation.startDate" name="startDate">
+                                        formControlName="startDate">
                                 </div>
                             </div>
 
@@ -49,24 +49,22 @@
                                 <div class="form-group local-forms">
                                     <label>End Date </label>
                                     <input class="form-control" type="date" placeholder="Enter End Date"
-                                        [(ngModel)]="newFormation.endDate" name="endDate">
+                                        formControlName="endDate">
                                 </div>
                             </div>
+                         
                             <div class="col-12 col-sm-4">
                                 <div class="form-group local-forms">
-                                    <label>Beneficiaires </label>
-                                    <input class="form-control" type="text" placeholder="Enter beneficiaires"
-                                        [(ngModel)]="newFormation.beneficiaires" name="beneficiaires">
+                                  <label>Formateur</label>
+                                  <select class="form-control" required formControlName="formateur">
+                                    <option value="" disabled selected>Select a formateur</option>
+                                    <option *ngFor="let formateur of formateurs" [ngValue]="formateur">{{ formateur.firstName }} {{ formateur.lastName }}</option>
+                                  </select>
+                                  
                                 </div>
-                            </div>
-                            <div class="col-12 col-sm-4">
-                                <div class="form-group local-forms">
-                                    <label>formateur </label>
-                                    <input class="form-control" type="text" placeholder="Enter formateur"
-                                        [(ngModel)]="newFormation.formateur" name="formateur">
-                                </div>
-                            </div>
-
+                              </div>
+                              
+                            
 
                             <div class="col-12">
                                 <div class="student-submit">

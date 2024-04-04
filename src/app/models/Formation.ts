@@ -1,4 +1,3 @@
-import { Beneficiaire } from './Beneficiaire';
 import { Formateur } from './Formateur';
 
 export interface Formation {
@@ -7,7 +6,6 @@ export interface Formation {
     price: number;
     startDate: Date;
     endDate: Date;
-    beneficiaires: Beneficiaire[];
     formateur: Formateur;
 
     

@@ -54,7 +54,6 @@
                                     <th>Price</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
-                                    <th>Beneficiaires</th>
                                     <th>Formateur</th>
                                     <th class="text-end">Actions</th>
                                 </tr>
@@ -66,8 +65,7 @@
                                     <td>{{ formation.price }}</td>
                                     <td>{{ formation.startDate }}</td>
                                     <td>{{ formation.endDate }}</td>
-                                    <td>{{ formation.beneficiaires }}</td>
-                                    <td>{{formation.formateur}}</td>
+                                    <td>{{ formation.formateur.firstName }} {{ formation.formateur.lastName }}</td>
                                     <td class="text-end">
                                         <div class="actions">
                                             <a href="javascript:;" class="btn btn-sm bg-success-light me-2"><i class="feather-eye"></i></a>
@@ -76,6 +74,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                
                             </tbody>
                         </table>
                     </div>

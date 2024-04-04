@@ -1,9 +1,11 @@
-import { Component, OnInit , Inject} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Beneficiaire } from 'src/app/models/Beneficiaire';
 import { BeneficiaireService } from 'src/app/services/BeneficiaireService';
 import { UploadService } from 'src/app/upload.service';
+import { Formation } from 'src/app/models/Formation';
+import { FormationService } from 'src/app/services/FormationService';
 
 @Component({
   selector: 'app-add-beneficiaire',
@@ -16,9 +18,12 @@ export class AddBeneficiaireComponent implements OnInit {
   files: File[] = [];
   imageUrl: string = "";
   imageUploaded: boolean = false;
+  formations: Formation[] = [];
+  selectedFormations: Formation[] = [];
 
   constructor(
     private beneficiaireService: BeneficiaireService,
+    private formationService: FormationService,
     private router: Router,
     private upload: UploadService,
     private fb: FormBuilder
@@ -34,6 +39,11 @@ export class AddBeneficiaireComponent implements OnInit {
       cin: ['', [Validators.required]],
       adress: ['', [Validators.required]],
       image: ['', [Validators.required]],
+      formations: ['']
+    });
+
+    this.formationService.getAllFormations().subscribe(formations => {
+      this.formations = formations;
     });
   }
 
@@ -64,9 +74,11 @@ export class AddBeneficiaireComponent implements OnInit {
       this.imageUploaded = true;
     });
   }
-  
 
- onSubmit(): void {
+  onSubmit(): void {
+    // Associer les formations sélectionnées au nouveau bénéficiaire
+    this.newBeneficiaire.formations = this.selectedFormations;
+
     this.beneficiaireService.addBeneficiaire(this.newBeneficiaire).subscribe(
       (res: any) => {
         // Handle success response
@@ -84,5 +96,6 @@ export class AddBeneficiaireComponent implements OnInit {
 
   resetForm(): void {
     this.form.reset();
+    this.selectedFormations = []; // Réinitialiser les formations sélectionnées
   }
 }

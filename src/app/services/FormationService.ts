@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Formation } from '../models/Formation';
+import { Formateur } from '../models/Formateur';
+
 import * as XLSX from 'xlsx' 
 @Injectable({
   providedIn: 'root'
 })
 export class FormationService {
-  private apiUrl = 'http://localhost:7070'; 
+  private apiUrl = 'http://localhost:6060'; 
 
   constructor(private http: HttpClient) { }
 
@@ -42,4 +44,6 @@ export class FormationService {
       observer.complete();
     });
 }
+
+
 }
